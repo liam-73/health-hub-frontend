@@ -1,0 +1,17 @@
+<nb-card>
+  <nb-card-header>
+    <div class="text-center">
+      <img [src]="user.profile" alt="profile" />
+      <nb-icon
+        icon="more-vertical"
+        nbTooltip="View Detail"
+        nbTooltipPlacement="bottom"
+        [routerLink]="[user._id]"
+      ></nb-icon>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <p>Name: {{ user.name | titlecase | shorten: 20 }}</p>
+    <p>Email: {{ user.email | shorten: 20 }}</p>
+  </nb-card-body>
+</nb-card>

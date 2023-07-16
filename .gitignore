@@ -1,0 +1,9 @@
+node_modules
+
+.angular/cache/13.3.0
+
+package-lock.json
+
+/dist
+/.vscode
+/.firebase

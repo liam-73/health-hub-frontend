@@ -1,0 +1,141 @@
+<nb-layout center>
+  <nb-layout-column>
+    <div class="alert-box" *ngIf="error && !createdAppt">
+      <p>{{ error | lowercase }}</p>
+      <div class="alert-box-actions">
+        <button
+          type="button"
+          class="btn-close"
+          (click)="onCloseAlert()"
+        ></button>
+      </div>
+    </div>
+    <div class="ok" *ngIf="createdAppt">
+      <p>Appointment creation successfully completed</p>
+      <div class="alert-box-actions">
+        <button
+          type="button"
+          class="btn-close"
+          (click)="onCloseAlert()"
+        ></button>
+      </div>
+    </div>
+    <nb-card>
+      <form
+        #apptForm="ngForm"
+        (ngSubmit)="onSubmit(apptForm)"
+        autocomplete="off"
+      >
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <small>Appointment Date <span class="text-danger">*</span></small>
+              <input
+                [nbDatepicker]="datepicker"
+                placeholder="Choose a date"
+                class="form-control"
+                nbInput
+                fullWidth
+                ngModel
+                name="date"
+                required
+              />
+              <nb-datepicker #datepicker></nb-datepicker>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="patient-input">
+                <small>Patient Name <span class="text-danger">*</span></small>
+              </label>
+              <input
+                #patient
+                id="patient-input"
+                nbInput
+                fullWidth
+                type="text"
+                ngModel
+                name="patient"
+                (ngModelChange)="onModelChange($event, 'PATIENT')"
+                placeholder="Enter a patient name"
+                [nbAutocomplete]="patientAuto"
+                required
+              />
+
+              <nb-autocomplete #patientAuto [handleDisplayFn]="viewHandle">
+                <nb-option
+                  *ngFor="let patient of filteredPatients$ | async"
+                  [value]="patient"
+                >
+                  {{ patient.name }}
+                </nb-option>
+              </nb-autocomplete>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="doctor-input">
+                <small>Doctor Name <span class="text-danger">*</span></small>
+              </label>
+              <input
+                id="doctor-input"
+                nbInput
+                fullWidth
+                type="text"
+                ngModel
+                name="doctor"
+                (ngModelChange)="onModelChange($event, 'DOCTOR')"
+                placeholder="Enter a doctor name"
+                [nbAutocomplete]="doctorAuto"
+                required
+              />
+
+              <nb-autocomplete #doctorAuto [handleDisplayFn]="viewHandle">
+                <nb-option
+                  *ngFor="let doctor of filteredDoctors$ | async"
+                  [value]="doctor"
+                >
+                  {{ doctor.name }}
+                </nb-option>
+              </nb-autocomplete>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <small for="reason">reason</small>
+              <textarea
+                id="doctor"
+                class="form-control my-2"
+                nbInput
+                fullWidth
+                ngModel
+                name="reason"
+                placeholder="Reason"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <button type="submit" class="btn" [disabled]="!apptForm.valid">
+              Create
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger mx-2"
+              (click)="onCancel()"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </form>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>

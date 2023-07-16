@@ -1,0 +1,11 @@
+<nb-layout fixed>
+  <nb-layout-header fixed>
+    <app-header (menuState)="onToggleSidebar()"></app-header>
+  </nb-layout-header>
+
+  <nb-sidebar state="compacted" [responsive] [collapsedBreakpoints]="['xs', 'is']">
+    <nb-menu [items]="sidebarMenu" (click)="onMenuClick($event)"> </nb-menu>
+  </nb-sidebar>
+
+  <nb-layout-column><router-outlet></router-outlet></nb-layout-column>
+</nb-layout>

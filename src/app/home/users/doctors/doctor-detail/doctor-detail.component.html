@@ -1,0 +1,87 @@
+<nb-layout center>
+  <nb-layout-column>
+    <nb-card>
+      <nb-card-header>
+        <div class="text-center">
+          <img [src]="doctor.profile" alt="profile" />
+        </div>
+      </nb-card-header>
+      <nb-card-body>
+        <nb-tabset>
+          <nb-tab tabTitle="Info">
+            <p>
+              Name: <span>{{ doctor.name | titlecase }}</span>
+            </p>
+            <p>
+              Email: <span>{{ doctor.email }}</span>
+            </p>
+            <p>
+              Birthday: <span>{{ doctor.dateOfBirth | date }}</span>
+            </p>
+            <p>
+              Gender: <span>{{ doctor.gender }}</span>
+            </p>
+            <p>
+              Address: <span>{{ doctor.address }}</span>
+            </p>
+            <p>
+              Degree: <span>{{ doctor.degree }}</span>
+            </p>
+            <div class="d-flex justify-content-start">
+              <button class="btn" (click)="onEdit()">Edit</button>
+              <button class="btn btn-danger" (click)="onDelete()">
+                Delete
+              </button>
+            </div>
+          </nb-tab>
+          <nb-tab tabTitle="Appointments">
+            <div *ngIf="appointments && appointments.length > 0">
+              <div class="d-flex justify-content-between">
+                <p>Patient profile</p>
+                <p>Patient name</p>
+                <p>Appointment reason</p>
+                <p>Appointment date</p>
+              </div>
+              <nb-card *ngFor="let appointment of appointments">
+                <nb-card-body>
+                  <div class="d-flex justify-content-between">
+                    <img
+                      class="appointments-tab-img"
+                      [src]="appointment.patient.profile"
+                      alt="patient profile"
+                    />
+                    <p>{{ appointment.patient.name | titlecase }}</p>
+                    <p>{{ appointment.reason | lowercase }}</p>
+                    <p>{{ appointment.date | date }}</p>
+                  </div>
+                </nb-card-body>
+              </nb-card>
+            </div>
+            <div *ngIf="!appointments || appointments.length < 1">
+              No Appointments
+            </div>
+          </nb-tab>
+          <nb-tab tabTitle="Transactions">
+            <div *ngIf="tranxDates && tranxDates.length > 0">
+              <div class="d-flex justify-content-between">
+                <p>Date</p>
+                <p>Amount</p>
+              </div>
+              <nb-card *ngFor="let date of tranxDates">
+                <nb-card-body>
+                  <div class="d-flex justify-content-between">
+                    <p>{{ date | date }}</p>
+                    <p>{{ tranxs[date] }}</p>
+                  </div>
+                </nb-card-body>
+              </nb-card>
+            </div>
+            <div *ngIf="!tranxDates || tranxDates.length < 1">
+              No Transactions
+            </div>
+          </nb-tab>
+        </nb-tabset>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>

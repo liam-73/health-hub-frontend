@@ -1,0 +1,25 @@
+<nb-card>
+  <nb-card-header>
+    <div class="d-flex justify-content-between">
+      <p class="date">{{ appointment.date | date }}</p>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="d-flex justify-content-around">
+      <div class="text-center">
+        <img [src]="appointment.patient.profile" alt="patient profile" />
+        <p>{{ appointment.patient.name | titlecase }}</p>
+      </div>
+      <div class="text-center">
+        <img [src]="appointment.doctor.profile" alt="patient profile" />
+        <p>{{ appointment.doctor.name | titlecase }}</p>
+      </div>
+    </div>
+    <div>
+      <small>reason</small>
+      <p class="px-2">
+        {{ appointment.reason }}
+      </p>
+    </div>
+  </nb-card-body>
+</nb-card>

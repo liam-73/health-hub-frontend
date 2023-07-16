@@ -1,0 +1,63 @@
+* {
+  padding: 5px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+}
+
+.logout-button {
+  background-color: #606060;
+  border: 1px solid #303030;
+  border-radius: 8px;
+  color: #000;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0 10px 0 10px;
+  text-align: center;
+  width: 80px;
+  height: 30px;
+}
+
+.logout-button:hover {
+  border: none;
+  background-color: #909090;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+}
+
+nb-action {
+  height: auto;
+  display: flex;
+  align-content: center;
+}
+
+nb-icon {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  color: #000;
+}
+
+nb-icon:first-child {
+  padding-left: 0;
+  cursor: pointer;
+}
+
+nb-icon:nth-child(2) {
+  margin-left: 20px;
+}
+
+.app-name {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #000;
+}

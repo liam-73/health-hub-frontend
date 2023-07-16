@@ -1,0 +1,28 @@
+p {
+  margin-top: 10px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+nb-card {
+  margin-top: 10px;
+  width: 18rem;
+}
+
+nb-card-header {
+  font-size: 14px;
+  background-color: #606060;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding-bottom: 0;
+}
+
+.date {
+  margin-top: 0;
+  color: #fff;
+}
+
+img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  margin: 0 1rem 0 1rem;
+}

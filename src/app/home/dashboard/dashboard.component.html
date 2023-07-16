@@ -1,0 +1,52 @@
+<div class="header d-flex flex-row-reverse">
+  <div class="col-xs-12">
+    <button class="btn" (click)="onAddAdmin()">
+      <nb-icon icon="plus" pack="customIcons"></nb-icon> Admin
+    </button>
+  </div>
+</div>
+<hr />
+<div class="row flex-column flex-lg-row">
+  <div class="col-12 d-flex justify-content-between">
+    <nb-card>
+      <nb-card-body>
+        <h3>
+          <nb-icon class="p-1 my-1" icon="appointments" pack="customIcons">
+          </nb-icon>
+          {{ todayAppt }}
+        </h3>
+        <span> Appointments today </span>
+      </nb-card-body>
+    </nb-card>
+    <nb-card>
+      <nb-card-body>
+        <h3>
+          <nb-icon class="p-1 my-1" icon="appointments" pack="customIcons">
+          </nb-icon>
+          {{ appointments }}
+        </h3>
+        <span> Appointments last 7 days </span>
+      </nb-card-body>
+    </nb-card>
+    <nb-card>
+      <nb-card-body>
+        <h3>
+          <nb-icon class="p-1 my-1" icon="patients" pack="customIcons">
+          </nb-icon>
+          {{ patients }}
+        </h3>
+        <span> Patients registered last 7 days </span>
+      </nb-card-body>
+    </nb-card>
+    <nb-card>
+      <nb-card-body>
+        <h3>
+          <nb-icon class="p-1 my-1" icon="doctors" pack="customIcons">
+          </nb-icon>
+          {{ doctors }}
+        </h3>
+        <span> Doctors joined last 7 days </span>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<nb-layout center>
+  <nb-layout-column>
+    <nb-card>
+      <nb-card-header>
+        <div class="text-center">
+          <img [src]="patient.profile" alt="profile" />
+        </div>
+      </nb-card-header>
+      <nb-card-body>
+        <p>
+          Name: <span>{{ patient.name | titlecase }}</span>
+        </p>
+        <p>
+          Email: <span>{{ patient.email }}</span>
+        </p>
+        <p>
+          Birthday: <span>{{ patient.dateOfBirth | date }}</span>
+        </p>
+        <p>
+          Gender: <span>{{ patient.gender }}</span>
+        </p>
+        <p>
+          Address: <span>{{ patient.address }}</span>
+        </p>
+        <p>
+          Diagnosis: <span>{{ patient.diagnosis }}</span>
+        </p>
+        <div class="d-flex justify-content-start">
+          <button class="btn" (click)="onEdit()">Edit</button>
+          <button class="btn btn-danger" (click)="onDelete()">Delete</button>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>

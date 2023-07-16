@@ -1,0 +1,38 @@
+<nb-layout center>
+  <nb-layout-column>
+    <nb-card>
+      <nb-card-header>
+        <div class="text-center">
+          <img [src]="employee.profile" alt="profile" />
+        </div>
+      </nb-card-header>
+      <nb-card-body>
+        <p>
+          Name: <span>{{ employee.name | titlecase }}</span>
+        </p>
+        <p>
+          Email: <span>{{ employee.email }}</span>
+        </p>
+        <p>
+          Birthday: <span>{{ employee.dateOfBirth | date }}</span>
+        </p>
+        <p>
+          Gender: <span>{{ employee.gender }}</span>
+        </p>
+        <p>
+          Address: <span>{{ employee.address }}</span>
+        </p>
+        <p>
+          Role: <span>{{ employee.user_type | titlecase }}</span>
+        </p>
+        <p>
+          Degree: <span>{{ employee.degree }}</span>
+        </p>
+        <div class="d-flex justify-content-start">
+          <button class="btn" (click)="onEdit()">Edit</button>
+          <button class="btn btn-danger" (click)="onDelete()">Delete</button>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>

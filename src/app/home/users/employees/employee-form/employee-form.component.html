@@ -1,0 +1,177 @@
+<nb-layout center>
+  <nb-layout-column>
+    <div class="alert-box" *ngIf="error && !userCreated">
+      <p>{{ error | lowercase }}</p>
+      <div class="alert-box-actions">
+        <button
+          type="button"
+          class="btn-close"
+          (click)="onCloseAlert()"
+        ></button>
+      </div>
+    </div>
+    <div class="ok" *ngIf="userCreated">
+      <p>
+        user
+        {{ userCreated && !userUpdated ? 'creation' : 'migration' }}
+        successfully completed
+      </p>
+      <div class="alert-box-actions">
+        <button
+          type="button"
+          class="btn-close"
+          (click)="onCloseAlert()"
+        ></button>
+      </div>
+    </div>
+    <nb-card>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="avatar-upload">
+              <div class="avatar-edit">
+                <label for="avatar">
+                  <nb-icon icon="image"></nb-icon>
+                  <input
+                    type="file"
+                    id="avatar"
+                    accept=".png, .jpg, .jpeg"
+                    (change)="onAvatarAdded($event)"
+                  />
+                </label>
+              </div>
+              <div
+                class="preview"
+                [style.background]="'url(' + profileUrl + ')'"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="name">
+                <small>Name <span class="text-danger">*</span></small>
+              </label>
+              <input
+                type="text"
+                nbInput
+                fullWidth
+                class="my-2"
+                id="name"
+                placeholder="Enter a Name"
+                formControlName="name"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="email">
+                <small>Email <span class="text-danger">*</span></small>
+              </label>
+              <input
+                type="email"
+                nbInput
+                fullWidth
+                id="email"
+                placeholder="Enter email"
+                formControlName="email"
+                class="my-2"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <small>Date of Birth</small>
+              <input
+                [nbDatepicker]="datepicker"
+                placeholder="Choose a date"
+                formControlName="dateOfBirth"
+                class="form-control my-2"
+                nbInput
+                fullWidth
+              />
+              <nb-datepicker #datepicker></nb-datepicker>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <small>Gender</small>
+              <nb-radio-group class="p-5" formControlName="gender">
+                <nb-radio
+                  class="mx-2"
+                  *ngFor="let gender of genders"
+                  [value]="gender.value"
+                >
+                  {{ gender.label }}
+                </nb-radio>
+              </nb-radio-group>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <small>Address</small>
+              <textarea
+                formControlName="address"
+                class="form-control my-2"
+                nbInput
+                fullWidth
+                placeholder="Address"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="!isEdit">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <small>Role <span class="text-danger">*</span></small>
+              <input
+                formControlName="user_type"
+                class="form-control my-2"
+                nbInput
+                fullWidth
+                placeholder="Role"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <small>Degree <span class="text-danger">*</span></small>
+              <input
+                formControlName="degree"
+                class="form-control my-2"
+                nbInput
+                fullWidth
+                placeholder="Degree"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <button type="submit" class="btn" [disabled]="userForm.invalid">
+              {{ !isEdit ? 'Create' : 'Update' }}
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger mx-2"
+              (click)="onCancel()"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </form>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>

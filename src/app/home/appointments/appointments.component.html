@@ -1,0 +1,27 @@
+<div class="header d-flex justify-content-between">
+  <div class="col-xs-12">
+    <button class="btn" (click)="onCreateAppt()">
+      <nb-icon icon="plus" pack="customIcons"></nb-icon> Appointment
+    </button>
+  </div>
+  <div class="d-flex align-items-center">
+    <input
+      nbInput
+      placeholder="Enter start and end date"
+      [nbDatepicker]="apptFilter"
+      [(ngModel)]="filterDate"
+    />
+    <nb-rangepicker #apptFilter></nb-rangepicker>
+    <button class="mx-2 btn btn-primary" (click)="onFilter()">Filter</button>
+  </div>
+</div>
+<hr />
+<div class="cards">
+  <app-appointment-card
+    *ngFor="let appointmentEl of appointments"
+    [appointment]="appointmentEl"
+  ></app-appointment-card>
+</div>
+<div *ngIf="!appointments">
+  <h3>No Data</h3>
+</div>

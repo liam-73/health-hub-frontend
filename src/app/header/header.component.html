@@ -1,0 +1,12 @@
+<div class="header-container">
+  <div class="logo-container">
+    <a class="sidebar-toggle">
+      <nb-icon icon="menu" (click)="toggleSidebar()"></nb-icon>
+    </a>
+    <nb-icon icon="logo" pack="customIcons"></nb-icon>
+    <a class="app-name">HealthHub</a>
+  </div>
+  <button class="logout-button" *ngIf="isLoggedIn" (click)="onLogout()">
+    Logout
+  </button>
+</div>
